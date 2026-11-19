@@ -1,0 +1,739 @@
+/* =============================================================
+   Apprendo : feuille de style
+   Ambiance « cahier d'étude » : encre bleu foncé, papier clair,
+   et un jaune surligneur comme seule couleur forte.
+   ============================================================= */
+
+/* ---------- 1. Variables (couleurs, polices, espacements) ---------- */
+:root {
+    --encre: #1c2340;          /* texte principal, menu */
+    --encre-douce: #2e3761;    /* survol dans le menu */
+    --papier: #f4f6fb;         /* fond de page */
+    --blanc: #ffffff;
+    --surligneur: #ffd43b;     /* LA couleur forte du site */
+    --surligneur-fonce: #f2c200;
+    --gris: #5b6478;           /* textes secondaires */
+    --trait: #dde3ee;          /* bordures */
+    --succes: #2b8a3e;
+    --succes-fond: #e6f4ea;
+    --danger: #c92a2a;
+    --danger-fond: #fdecec;
+
+    --police-titre: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --police-texte: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+
+    --rayon: 10px;
+    --rayon-petit: 6px;
+}
+
+/* ---------- 2. Base ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--papier);
+    color: var(--encre);
+    font-family: var(--police-texte);
+    font-size: 16px;
+    line-height: 1.55;
+}
+
+a {
+    color: var(--encre);
+}
+
+h1, h2, h3 {
+    font-family: var(--police-titre);
+    line-height: 1.15;
+    margin: 0;
+}
+
+:focus-visible {
+    outline: 3px solid var(--surligneur-fonce);
+    outline-offset: 2px;
+}
+
+/* ---------- 3. Structure : menu latéral + contenu ---------- */
+.app {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: 100vh;
+}
+
+.barre-laterale {
+    background: var(--encre);
+    color: var(--blanc);
+    padding: 28px 18px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--blanc);
+    text-decoration: none;
+    font-family: var(--police-titre);
+    font-weight: 800;
+    font-size: 1.35rem;
+    margin: 0 8px 36px;
+}
+
+.logo-marque {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: var(--surligneur);
+    color: var(--encre);
+    font-size: 1.1rem;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.menu-lien {
+    color: #c9cfe6;
+    text-decoration: none;
+    padding: 10px 12px;
+    border-radius: var(--rayon-petit);
+    border-left: 3px solid transparent;
+}
+
+.menu-lien:hover {
+    background: var(--encre-douce);
+    color: var(--blanc);
+}
+
+.menu-lien.actif {
+    background: var(--encre-douce);
+    color: var(--blanc);
+    border-left-color: var(--surligneur);
+    font-weight: 700;
+}
+
+.contenu {
+    padding: 40px 48px;
+    max-width: 1180px;
+    width: 100%;
+}
+
+.pied {
+    margin-top: 64px;
+    padding-top: 20px;
+    border-top: 1px solid var(--trait);
+    color: var(--gris);
+    font-size: 0.85rem;
+}
+
+/* ---------- 4. En-tête de page (titre surligné + action) ---------- */
+.entete-page {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+}
+
+.titre-page {
+    font-size: clamp(1.9rem, 3vw, 2.6rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+/* Le trait de surligneur sous le titre : l'élément signature du site */
+.titre-page span {
+    background: linear-gradient(transparent 58%, var(--surligneur) 58%, var(--surligneur) 92%, transparent 92%);
+    padding: 0 4px;
+    margin: 0 -4px;
+}
+
+.sous-titre {
+    color: var(--gris);
+    margin: 8px 0 0;
+    max-width: 60ch;
+}
+
+.section {
+    margin-top: 40px;
+}
+
+.section-titre {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.section-entete {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.section-entete .section-titre {
+    margin-bottom: 0;
+}
+
+/* ---------- 5. Boutons ---------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 18px;
+    border-radius: var(--rayon-petit);
+    border: 2px solid transparent;
+    font-family: var(--police-texte);
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    line-height: 1.2;
+}
+
+.btn-primaire {
+    background: var(--surligneur);
+    color: var(--encre);
+    border-color: var(--encre);
+    box-shadow: 3px 3px 0 var(--encre);
+}
+
+.btn-primaire:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 var(--encre);
+}
+
+.btn-secondaire {
+    background: var(--blanc);
+    color: var(--encre);
+    border-color: var(--trait);
+}
+
+.btn-secondaire:hover {
+    border-color: var(--encre);
+}
+
+.btn-danger {
+    background: var(--blanc);
+    color: var(--danger);
+    border-color: #f1c4c4;
+}
+
+.btn-danger:hover {
+    background: var(--danger);
+    color: var(--blanc);
+    border-color: var(--danger);
+}
+
+.btn-petit {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.actions form {
+    margin: 0;
+}
+
+.lien-simple {
+    color: var(--encre);
+    font-weight: 700;
+    text-decoration-color: var(--surligneur-fonce);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+/* ---------- 6. Messages ---------- */
+.alerte {
+    padding: 12px 16px;
+    border-radius: var(--rayon-petit);
+    margin-bottom: 24px;
+    border-left: 4px solid;
+}
+
+.alerte-succes {
+    background: var(--succes-fond);
+    border-color: var(--succes);
+    color: #1e5e2b;
+}
+
+.alerte-erreur {
+    background: var(--danger-fond);
+    border-color: var(--danger);
+    color: #8a1f1f;
+}
+
+.alerte ul {
+    margin: 6px 0 0;
+    padding-left: 20px;
+}
+
+/* ---------- 7. Chiffres du tableau de bord ---------- */
+.chiffres {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: var(--blanc);
+    border: 1px solid var(--trait);
+    border-radius: var(--rayon);
+}
+
+.chiffre {
+    padding: 22px 24px;
+    text-decoration: none;
+    color: var(--encre);
+    border-right: 1px solid var(--trait);
+}
+
+.chiffre:last-child {
+    border-right: 0;
+}
+
+.chiffre:hover .chiffre-valeur {
+    background: linear-gradient(transparent 60%, var(--surligneur) 60%);
+}
+
+.chiffre-valeur {
+    display: inline-block;
+    font-family: var(--police-titre);
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.chiffre-nom {
+    display: block;
+    color: var(--gris);
+    margin-top: 6px;
+}
+
+/* ---------- 8. Tableaux (listes) ---------- */
+.tableau-conteneur {
+    background: var(--blanc);
+    border: 1px solid var(--trait);
+    border-radius: var(--rayon);
+    overflow-x: auto;
+}
+
+.tableau {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.tableau th {
+    text-align: left;
+    font-weight: 700;
+    color: var(--gris);
+    font-size: 0.85rem;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--trait);
+    background: #fafbfd;
+    white-space: nowrap;
+}
+
+.tableau td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--trait);
+    vertical-align: middle;
+}
+
+.tableau tr:last-child td {
+    border-bottom: 0;
+}
+
+.tableau tbody tr:hover {
+    background: #fbfcff;
+}
+
+.tableau .nombre {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.titre-ligne {
+    font-weight: 700;
+    color: var(--encre);
+    text-decoration: none;
+}
+
+.titre-ligne:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--surligneur-fonce);
+    text-decoration-thickness: 2px;
+}
+
+.texte-gris {
+    color: var(--gris);
+    font-size: 0.9rem;
+}
+
+/* Initiales dans un rond (étudiants, formateurs) */
+.personne {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #e7ebf7;
+    color: var(--encre);
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+/* ---------- 9. Étiquettes de niveau ---------- */
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.badge-debutant      { background: #e6f4ea; color: #1e5e2b; }
+.badge-intermediaire { background: #fff4d6; color: #7a5a00; }
+.badge-avance        { background: #fde8e8; color: #8a1f1f; }
+.badge-neutre        { background: #eef1f7; color: var(--encre); }
+
+/* ---------- 10. Barre de progression ---------- */
+.progression {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 150px;
+}
+
+.progression-barre {
+    flex: 1;
+    height: 8px;
+    background: #e9edf5;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progression-remplie {
+    height: 100%;
+    background: var(--surligneur-fonce);
+    border-radius: 999px;
+}
+
+.progression-remplie.terminee {
+    background: var(--succes);
+}
+
+.progression-valeur {
+    font-size: 0.85rem;
+    font-weight: 700;
+    width: 3.2em;
+    text-align: right;
+}
+
+/* ---------- 11. Formulaires ---------- */
+.formulaire {
+    background: var(--blanc);
+    border: 1px solid var(--trait);
+    border-radius: var(--rayon);
+    padding: 28px;
+    max-width: 720px;
+}
+
+.grille-champs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 20px;
+}
+
+.champ {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.champ-large {
+    grid-column: 1 / -1;
+}
+
+.champ label {
+    font-weight: 700;
+    font-size: 0.92rem;
+}
+
+.champ .aide {
+    color: var(--gris);
+    font-size: 0.85rem;
+}
+
+.champ input,
+.champ select,
+.champ textarea {
+    font-family: var(--police-texte);
+    font-size: 1rem;
+    color: var(--encre);
+    padding: 10px 12px;
+    border: 1.5px solid var(--trait);
+    border-radius: var(--rayon-petit);
+    background: var(--blanc);
+    width: 100%;
+}
+
+.champ textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.champ input:focus,
+.champ select:focus,
+.champ textarea:focus {
+    outline: none;
+    border-color: var(--encre);
+    box-shadow: 0 0 0 3px rgba(255, 212, 59, 0.6);
+}
+
+.formulaire-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 26px;
+    padding-top: 20px;
+    border-top: 1px solid var(--trait);
+}
+
+/* ---------- 12. Fiche détail (showCours, showEtudiant) ---------- */
+.fiche {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.bloc {
+    background: var(--blanc);
+    border: 1px solid var(--trait);
+    border-radius: var(--rayon);
+    padding: 24px;
+}
+
+.infos {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px 16px;
+    margin: 0;
+}
+
+.infos dt {
+    color: var(--gris);
+}
+
+.infos dd {
+    margin: 0;
+    font-weight: 700;
+}
+
+/* ---------- 13. Filtres au-dessus des listes ---------- */
+.filtres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.filtre {
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1.5px solid var(--trait);
+    background: var(--blanc);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.filtre:hover {
+    border-color: var(--encre);
+}
+
+.filtre.actif {
+    background: var(--encre);
+    border-color: var(--encre);
+    color: var(--blanc);
+}
+
+/* ---------- 14. Liste vide ---------- */
+.vide {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--gris);
+}
+
+.vide p {
+    margin: 0 0 16px;
+}
+/* ---------- 16. Ajouts TP2 : page d'accueil et erreurs de formulaire ---------- */
+.accueil {
+    padding: 24px 0 8px;
+    max-width: 760px;
+}
+
+.accueil-titre {
+    font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+    line-height: 1.1;
+}
+
+.accueil-texte {
+    font-size: 1.15rem;
+    color: var(--gris);
+    max-width: 60ch;
+    margin: 18px 0 26px;
+}
+
+.rubriques {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 14px;
+}
+
+.rubrique {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 18px 20px;
+    background: var(--blanc);
+    border: 1px solid var(--trait);
+    border-radius: var(--rayon);
+    text-decoration: none;
+    color: var(--encre);
+}
+
+.rubrique strong {
+    font-family: var(--police-titre);
+    font-size: 1.15rem;
+}
+
+.rubrique span {
+    color: var(--gris);
+    font-size: 0.92rem;
+}
+
+.rubrique:hover {
+    border-color: var(--encre);
+}
+
+.rubrique:hover strong {
+    background: linear-gradient(transparent 60%, var(--surligneur) 60%);
+    align-self: flex-start;
+}
+
+.erreur-champ {
+    color: var(--danger);
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.fil {
+    margin: 0 0 8px;
+}
+
+.description {
+    margin: 0;
+    max-width: 65ch;
+    white-space: pre-line;
+}
+/* ---------- Image d'un cours (nouvelle fonctionnalité TP3) ---------- */
+.cours-image {
+    display: block;
+    width: 100%;
+    max-height: 320px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 18px;
+}
+
+.cours-image-apercu {
+    display: block;
+    width: 160px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+/* ---------- 15. Adaptation aux petits écrans ---------- */
+@media (max-width: 900px) {
+    .app {
+        grid-template-columns: 1fr;
+    }
+
+    .barre-laterale {
+        position: static;
+        height: auto;
+        padding: 16px;
+    }
+
+    .logo {
+        margin: 0 0 14px;
+    }
+
+    .menu {
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    .menu-lien {
+        white-space: nowrap;
+        border-left: 0;
+        border-bottom: 3px solid transparent;
+    }
+
+    .menu-lien.actif {
+        border-bottom-color: var(--surligneur);
+    }
+
+    .contenu {
+        padding: 28px 18px;
+    }
+
+    .chiffres {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .chiffre:nth-child(2) {
+        border-right: 0;
+    }
+
+    .chiffre:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--trait);
+    }
+
+    .fiche,
+    .grille-champs {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}

@@ -1,0 +1,6 @@
+# Apache : toutes les adresses qui ne sont pas un vrai fichier ou dossier
+# sont envoyées vers index.php, qui choisit la bonne route.
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [QSA,L]
